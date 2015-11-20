@@ -3,7 +3,7 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
   <Id>113b6450-f7a0-4bd5-933c-0258fcccd224</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>[Provider name]</ProviderName>
+  <ProviderName>ShaunCarton Sole Developer</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Shaun's Test Office App v1" />
   <Description DefaultValue="Shaun's mail add-in modified via XML manifest"/>
@@ -18,14 +18,16 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="~remoteAppUrl/AppRead/Home/Home.html"/>
+        <SourceLocation DefaultValue="https://dunderbrainaddins.azurewebsites.net/AppRead/Home/Home.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
   </FormSettings>
   <Permissions>ReadItem</Permissions>
   <Rule xsi:type="RuleCollection" Mode="Or">
-    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    <Rule xsi:type="ItemHasAttachment"/>
+    <Rule xsi:type="ItemHasRegularExpressionMatch" RegExName="Regex1" RegExValue=".*BoxiJob( |#)\d{3}( |\p{P}|\W).*" PropertyName="Subject" />
   </Rule>
   <DisableEntityHighlighting>false</DisableEntityHighlighting>
 </OfficeApp>
